@@ -2,6 +2,8 @@
 
 A Server-side GTM template that converts standard GA4 e-commerce events into Piano Analytics events to simplify your implementation.
 
+<br><br>
+
 ## 📋 Supported Events
 
 | GA4 Event         | Piano Events                                              | Native for Piano |
@@ -22,12 +24,16 @@ A Server-side GTM template that converts standard GA4 e-commerce events into Pia
 Other events won't be renamed.
 Standard GA4 parameters will still be mapped to Piano.
 
+<br><br>
+
 ## 🍪 Used cookies
 
 | Category   | Description                                                                                                                                                    |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `_pa_cart` | • Persist the cart between pages and visits.<br>• Emission of `cart.update` events in case of desynchronization with Website<br>• Persistance : `30 days`.<br> |
 | `_pcid`    | • Identify users (Standard UUID)<br>• Duration : 395 days<br>                                                                                                  |
+
+<br><br>
 
 ## 🛒 Product List
 
@@ -36,21 +42,19 @@ Choose whether you want an automatic conversion from GA4 -> Piano or provide a f
 - **GA4** : [official documentation](https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?hl=fr&client_type=gtag).
 - **Piano** : [official documentation](https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/sales-insights).
 
+<br><br>
+
 ## 💚 Shopify specific
 
 Compatibility with Shopify (Checkout extensibility) is provided.<br>
-Requires you to input a User ID (for both logged in and logged out users).
+Requires you to input : 
 
-## ⚙️ Logic
+| Category   | Description                                                                                                                                                    |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `_pa_cart` | Send the content of the cookie as event parameter in your GA4 client (Mandatory for `purchase` event.  |
+| `User ID`    | Unique ID for your users (logged in AND logged out) as full replacement of the cookie `_pcid`        |
 
-| Step | Process                                            |
-|------|----------------------------------------------------|
-| 1️⃣  | **Event Reception** → Reading data & cookies       |
-| 2️⃣  | **Format Detection** → Data normalization          |
-| 3️⃣  | **Specific Processing** → By event type            |
-| 4️⃣  | **Consistency Check** → Cookie vs event comparison |
-| 5️⃣  | **Enrichment** → Adding configured parameters      |
-| 6️⃣  | **Transmission** → Sending to Piano API            |
+<br>
 
 ## 🛠 Troubleshooting
 
@@ -60,7 +64,9 @@ Requires you to input a User ID (for both logged in and logged out users).
 | **Duplicates**        | Validate the uniqueness of sent events        |
 | **Desynchronization** | Monitor unexpected `cart.update` events       |
 
-## 🔒 Disclaimer
+<br><br>
+
+---
 
 Created by [Addingwell](https://www.addingwell.com).  
 Maintained by Addingwell & the community.
@@ -70,5 +76,3 @@ Ensure you understand how the template works.
 If your incoming data does not correspond to a regular Google Analytics 4 format, you might face issues during the `GA4 → Piano` conversion.
 
 ---
-
-This template is designed to simplify the integration between Google Analytics 4 and Piano Analytics while automatically managing the complexities of e-commerce tracking.
